@@ -323,9 +323,9 @@ class ResultHandler(_pool.ResultHandler):
         # flush the processes outqueues until they've all terminated.
         outqueues = set(fileno_to_outq)
         while cache and outqueues and self._state != TERMINATE:
-            if check_timeouts is not None:
+            # if check_timeouts is not None:
                 # make sure tasks with a time limit will time out.
-                check_timeouts()
+                # check_timeouts()
             # cannot iterate and remove at the same time
             pending_remove_fd = set()
             for fd in outqueues:
