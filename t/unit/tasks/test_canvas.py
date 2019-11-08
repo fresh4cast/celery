@@ -324,6 +324,12 @@ class test_chain(CanvasCase):
             assert isinstance(task, Signature)
             assert task.app is self.app
 
+    def test_groups_in_chain_to_chord(self):
+        g1 = group([self.add.s(2, 2), self.add.s(4, 4)])
+        g2 = group([self.add.s(3, 3), self.add.s(5, 5)])
+        c = g1 | g2
+        assert isinstance(c, chord)
+
     def test_group_to_chord(self):
         c = (
             self.add.s(5) |
@@ -401,6 +407,24 @@ class test_chain(CanvasCase):
         c.apply_async(link_error=[s('error')])
         for task in c.tasks:
             assert task.options['link_error'] == [s('error')]
+
+    def test_apply_options_none(self):
+        class static(Signature):
+
+            def clone(self, *args, **kwargs):
+                return self
+
+            def _apply_async(self, *args, **kwargs):
+                self.args = args
+                self.kwargs = kwargs
+
+        c = static(self.add, (2, 2), type=self.add, app=self.app, priority=5)
+
+        c.apply_async(priority=4)
+        assert c.kwargs['priority'] == 4
+
+        c.apply_async(priority=None)
+        assert c.kwargs['priority'] == 5
 
     def test_reverse(self):
         x = self.add.s(2, 2) | self.add.s(2)

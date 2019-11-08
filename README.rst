@@ -2,7 +2,7 @@
 
 |build-status| |coverage| |license| |wheel| |pyversion| |pyimp| |ocbackerbadge| |ocsponsorbadge|
 
-:Version: 4.2.1 (windowlicker)
+:Version: 4.4.0rc3 (cliffs)
 :Web: http://celeryproject.org/
 :Download: https://pypi.org/project/celery/
 :Source: https://github.com/celery/celery/
@@ -19,15 +19,12 @@ If you are using Celery to create a commercial product, please consider becoming
 .. _`backer`: https://opencollective.com/celery#backer
 .. _`sponsor`: https://opencollective.com/celery#sponsor
 
+For enterprise
+==============
 
-Sponsors
---------
+Available as part of the Tidelift Subscription.
 
-|ImageLink|_
-
-.. |ImageLink| image:: https://i.imgur.com/ULmQEib.png
-.. _ImageLink: https://getstream.io/try-the-api/?utm_source=celery&utm_medium=banner&utm_campaign=github
-
+The maintainers of ``celery`` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. `Learn more. <https://tidelift.com/subscription/pkg/pypi-celery?utm_source=pypi-celery&utm_medium=referral&utm_campaign=enterprise&utm_term=repo>`_
 
 What's a Task Queue?
 ====================
@@ -47,21 +44,23 @@ to high availability and horizontal scaling.
 
 Celery is written in Python, but the protocol can be implemented in any
 language. In addition to Python there's node-celery_ for Node.js,
-and a `PHP client`_.
+a `PHP client`_ and `gocelery`_ for golang.
 
 Language interoperability can also be achieved by using webhooks
 in such a way that the client enqueues an URL to be requested by a worker.
 
 .. _node-celery: https://github.com/mher/node-celery
 .. _`PHP client`: https://github.com/gjedeer/celery-php
+.. _`gocelery`: https://github.com/gocelery/gocelery
 
 What do I need?
 ===============
 
-Celery version 4.2 runs on,
+Celery version 4.3 runs on,
 
-- Python (2.7, 3.4, 3.5, 3.6)
-- PyPy (6.0)
+- Python (2.7, 3.4, 3.5, 3.6, 3.7)
+- PyPy2.7 (6.0)
+- PyPy3.5 (6.0)
 
 
 This is the last version to support Python 2.7,
@@ -220,6 +219,8 @@ Documentation
 The `latest documentation`_ is hosted at Read The Docs, containing user guides,
 tutorials, and an API reference.
 
+最新的中文文档托管在 https://www.celerycn.io/ 中，包含用户指南、教程、API接口等。
+
 .. _`latest documentation`: http://docs.celeryproject.org/en/latest/
 
 .. _celery-installation:
@@ -306,8 +307,14 @@ Transports and Backends
 :``celery[azureblockblob]``:
     for using Azure Storage as a result backend (using ``azure-storage``)
 
+:``celery[s3]``:
+    for using S3 Storage as a result backend.
+
 :``celery[couchbase]``:
     for using Couchbase as a result backend.
+
+:``celery[arangodb]``:
+    for using ArangoDB as a result backend.
 
 :``celery[elasticsearch]``:
     for using Elasticsearch as a result backend.
@@ -428,7 +435,7 @@ to our issue tracker at https://github.com/celery/celery/issues/
 Wiki
 ====
 
-https://wiki.github.com/celery/celery/
+https://github.com/celery/celery/wiki
 
 Credits
 =======
@@ -521,3 +528,7 @@ file in the top distribution directory for the full license text.
 .. |ocsponsorbadge| image:: https://opencollective.com/celery/sponsors/badge.svg
     :alt: Sponsors on Open Collective
     :target: #sponsors
+
+.. |downloads| image:: https://pepy.tech/badge/celery
+    :alt: Downloads
+    :target: https://pepy.tech/project/celery
